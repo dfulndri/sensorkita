@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard Data | SensorKita Tangerang</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#695d46", "surface-dim": "#dcd9d9", "on-primary-fixed": "#002108", "on-secondary-fixed": "#231a08", "surface-container": "#f0eded", "on-error-container": "#93000a", "primary": "#416744", "outline": "#727970", "tertiary-fixed-dim": "#9ecfd1", "on-secondary-container": "#6d614a", "on-tertiary-container": "#003a3c", "primary-fixed-dim": "#a7d1a6", "inverse-primary": "#a7d1a6", "tertiary-container": "#73a4a6", "inverse-on-surface": "#f3f0f0", "on-secondary-fixed-variant": "#504530", "tertiary-fixed": "#b9ecee", "on-surface-variant": "#424941", "surface-container-lowest": "#ffffff", "secondary-fixed": "#f2e0c3", "on-primary-fixed-variant": "#294f2e", "primary-container": "#7da67e", "outline-variant": "#c2c8be", "on-secondary": "#ffffff", "surface-container-low": "#f6f3f2", "surface-bright": "#fbf9f8", "on-surface": "#1b1c1c", "surface-variant": "#e4e2e1", "on-error": "#ffffff", "on-tertiary-fixed": "#002021", "background": "#fbf9f8", "surface-container-high": "#eae8e7", "on-tertiary": "#ffffff", "on-tertiary-fixed-variant": "#1a4e50", "surface": "#fbf9f8", "on-primary": "#ffffff", "on-primary-container": "#153b1c", "primary-fixed": "#c2eec1", "inverse-surface": "#303030", "secondary-container": "#efdec0", "on-background": "#1b1c1c", "surface-container-highest": "#e4e2e1", "error": "#ba1a1a", "tertiary": "#356668", "surface-tint": "#416744", "error-container": "#ffdad6", "secondary-fixed-dim": "#d5c5a8"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    "spacing": { "base": "8px", "container-max-width": "1140px", "card-padding": "24px", "section-gap-mobile": "40px", "section-gap-desktop": "80px" },
+                    "fontFamily": { "display-lg-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-caps": ["Inter"] },
+                    "fontSize": { "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }], "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-caps": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }] }
+                }
+            }
+        }
+    </script>
+    <link href="../css/style.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+
+    <header class="bg-surface sticky top-0 z-50 shadow-sm w-full h-16 flex items-center">
+        <div class="w-full max-w-container-max-width mx-auto px-4 md:px-card-padding flex justify-between items-center relative">
+            <div class="flex items-center gap-2">
+                <span class="font-display-lg text-headline-md text-primary tracking-tight cursor-pointer"
+                    onclick="window.location.href='../../index.html'">SensorKita</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-6">
+                <div class="relative group">
+                    <button id="desktop-data-btn"
+                        class="font-label-caps text-primary border-b-2 border-primary transition-colors flex items-center gap-1 py-2">
+                        Data <span class="material-symbols-outlined text-sm transition-transform duration-200"
+                            id="data-arrow">keyboard_arrow_down</span>
+                    </button>
+                    <div id="desktop-dropdown"
+                        class="absolute left-0 mt-1 w-48 bg-surface rounded-xl shadow-lg border border-outline-variant py-2 hidden z-50">
+                        <button onclick="switchSubTab('dashboard')"
+                            class="w-full text-left px-4 py-2 text-sm font-label-caps text-primary hover:bg-surface-container transition-all">
+                            Dashboard Utama
+                        </button>
+                        <button onclick="switchSubTab('info')"
+                            class="w-full text-left px-4 py-2 text-sm font-label-caps text-primary hover:bg-surface-container transition-all">
+                            Info
+                        </button>
+                    </div>
+                </div>
+                <a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors py-1"
+                    href="panduan.html">Panduan</a>
+                <a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors py-1"
+                    href="komunitas.html">Komunitas</a>
+            </nav>
+            <div class="flex items-center gap-2 md:gap-4">
+                <span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-1 rounded-full hover:bg-surface-container transition-colors">help</span>
+                <span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-1 rounded-full hover:bg-surface-container transition-colors">settings</span>
+                <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+                    <span class="material-symbols-outlined text-primary">person</span>
+                </div>
+                <button id="menu-btn"
+                    class="md:hidden flex items-center justify-center p-1 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+                </button>
+            </div>
+            <div id="mobile-menu"
+                class="absolute top-16 left-0 right-0 bg-surface border-b border-outline-variant shadow-md p-4 hidden flex-col gap-4 md:hidden z-50">
+                <div>
+                    <button id="mobile-data-btn"
+                        class="w-full flex justify-between items-center font-label-caps text-primary py-2">
+                        <span>Data</span> <span class="material-symbols-outlined transition-transform"
+                            id="mobile-data-arrow">keyboard_arrow_down</span>
+                    </button>
+                    <div id="mobile-data-sub"
+                        class="hidden pl-4 flex flex-col gap-2 mt-1 border-l-2 border-outline-variant">
+                        <button onclick="switchSubTab('dashboard'); toggleMobileMenu();" class="text-left font-label-caps text-sm text-primary py-2">Dashboard Utama</button>
+                        <button onclick="switchSubTab('info'); toggleMobileMenu();" class="text-left font-label-caps text-sm text-primary py-2">Info</button>
+                    </div>
+                </div>
+                <a class="font-label-caps text-on-surface-variant py-2 border-b border-outline-variant"
+                    href="panduan.html">Panduan</a>
+                <a class="font-label-caps text-on-surface-variant py-2" href="komunitas.html">Komunitas</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="tab-dashboard" class="block">
+        <section id="dashboard-section"
+            class="w-full max-w-container-max-width mx-auto px-4 md:px-card-padding py-6 md:py-10">
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md text-primary m-0">Dashboard Kualitas Udara</h2>
+                    <p class="text-on-surface-variant text-sm mt-1">Real-time pemantauan sensor partisipatif Kabupaten Tangerang.</p>
+                </div>
+                <button onclick="window.location.href='panduan.html'"
+                    class="bg-surface border border-primary text-primary px-4 py-2 rounded-full font-label-caps text-xs flex items-center gap-2 self-start md:self-auto hover:bg-primary/5 transition-all">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Pergi ke Panduan
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant">
+                    <span class="material-symbols-outlined text-primary mb-2">air</span>
+                    <h4 class="text-xs font-label-caps text-on-surface-variant">Indeks Kualitas Udara (AQI)</h4>
+                    <p class="text-2xl font-bold text-primary mt-1">42 <span class="text-sm font-normal text-on-surface-variant">(Baik)</span></p>
+                </div>
+                <div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant">
+                    <span class="material-symbols-outlined text-secondary mb-2">device_thermostat</span>
+                    <h4 class="text-xs font-label-caps text-on-surface-variant">Rata-rata Suhu</h4>
+                    <p class="text-2xl font-bold text-on-surface mt-1">29.4°C</p>
+                </div>
+                <div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant">
+                    <span class="material-symbols-outlined text-tertiary mb-2">humidity_mid</span>
+                    <h4 class="text-xs font-label-caps text-on-surface-variant">Kelembapan Udara</h4>
+                    <p class="text-2xl font-bold text-on-surface mt-1">78%</p>
+                </div>
+                <div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant">
+                    <span class="material-symbols-outlined text-error mb-2">sensors</span>
+                    <h4 class="text-xs font-label-caps text-on-surface-variant">Sensor Aktif Tangerang</h4>
+                    <p class="text-2xl font-bold text-primary mt-1">3 Node</p>
+                </div>
+            </div>
+
+            <div class="bg-surface-container-low border border-outline-variant rounded-3xl p-6 h-[350px] flex flex-col items-center justify-center text-center mb-8">
+                <span class="material-symbols-outlined text-5xl text-outline mb-3">map</span>
+                <h3 class="font-headline-md text-on-surface mb-2">Peta Sebaran Sensor Spasial</h3>
+                <p class="text-sm text-on-surface-variant max-w-[450px]">Visualisasi grafik harian dan peta polusi udara interaktif Kecamatan se-Kabupaten Tangerang akan dimuat di sini.</p>
+            </div>
+
+            <div class="border-t border-outline-variant pt-8 mt-12">
+                <div class="bg-surface-container-low border border-outline-variant rounded-3xl p-6 mb-6">
+                    <h3 class="font-headline-md text-on-surface mb-2">Time Series Sensor Kabupaten Tangerang</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed max-w-[800px] mb-6">
+                        Dashboard ini mengambil data historis dari 3 perangkat Smart Citizen: 19686, 19684, dan 19682. 
+                        Sensor suhu dan kelembapan dicari otomatis dari metadata device.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 items-center">
+                        <select id="metricSelect" class="bg-surface border border-outline-variant rounded-xl px-4.5 py-2.5 text-sm text-on-surface outline-none focus:border-primary">
+                            <option value="temperature">Air Temperature</option>
+                            <option value="humidity">Relative Humidity</option>
+                        </select>
+
+                        <select id="rangeSelect" class="bg-surface border border-outline-variant rounded-xl px-4.5 py-2.5 text-sm text-on-surface outline-none focus:border-primary">
+                            <option value="24h">24 Jam Terakhir</option>
+                            <option value="3d">3 Hari Terakhir</option>
+                            <option value="7d">7 Hari Terakhir</option>
+                        </select>
+
+                        <select id="rollupSelect" class="bg-surface border border-outline-variant rounded-xl px-4.5 py-2.5 text-sm text-on-surface outline-none focus:border-primary">
+                            <option value="1h">Rollup 1 Jam</option>
+                            <option value="3h">Rollup 3 Jam</option>
+                            <option value="1d">Rollup 1 Hari</option>
+                        </select>
+
+                        <button onclick="loadDashboard()" class="bg-primary text-on-primary font-label-caps text-xs px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all shadow-md">
+                            Muat Ulang Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-surface border border-outline-variant rounded-3xl p-6 mb-6 shadow-sm">
+                    <h3 class="font-headline-md text-on-surface mb-4">Informasi Device</h3>
+                    <div id="deviceGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs sm:text-sm">
+                        <div class="p-4 bg-orange-50 border border-orange-200 text-amber-800 rounded-xl font-semibold leading-relaxed">
+                            Memuat metadata device...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface border border-outline-variant rounded-3xl p-4 sm:p-6 mb-6 shadow-sm">
+                    <h3 id="chartTitle" class="font-headline-md text-on-surface mb-4">Chart Time Series</h3>
+                    <div id="statusMessage" class="p-4 bg-orange-50 border border-orange-200 text-amber-800 rounded-xl font-semibold leading-relaxed mb-4 text-xs sm:text-sm">
+                        Mengambil data time series...
+                    </div>
+
+                    <div class="overflow-x-auto w-full custom-scrollbar border border-outline-variant rounded-2xl">
+                        <canvas id="timeSeriesChart" width="1100" height="420" class="w-full bg-white block rounded-2xl"></canvas>
+                    </div>
+
+                    <div id="legend" class="flex flex-wrap gap-4 mt-4 text-xs sm:text-sm text-on-surface-variant font-medium"></div>
+                </div>
+
+                <div class="bg-surface border border-outline-variant rounded-3xl p-6 shadow-sm">
+                    <h3 class="font-headline-md text-on-surface mb-2">Analisis Otomatis</h3>
+                    <div id="analysis" class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                        Analisis akan muncul setelah data berhasil dimuat.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECTION INFO -->
+    <div id="tab-info" class="hidden">
+        <section class="w-full max-w-container-max-width mx-auto px-4 md:px-card-padding py-8">
+            
+            <div class="bg-gradient-to-r from-primary-container/20 to-secondary-container/10 rounded-3xl p-6 md:p-8 mb-8 border border-outline-variant/30">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-sm">menu_book</span> Panduan Lapangan
+                        </span>
+                        <h2 class="font-display-lg text-2xl md:text-3xl text-on-surface font-extrabold tracking-tight">
+                            Interpretasi Sensor BME680
+                        </h2>
+                        <p class="text-on-surface-variant text-sm max-w-2xl leading-relaxed">
+                            Panduan praktis untuk memahami dinamika sirkulasi udara, kelembapan tropis, dan indeks kesegaran lingkungan di dalam rumah tangga Indonesia.
+                        </p>
+                    </div>
+                    <div class="hidden lg:block">
+                        <span class="material-symbols-outlined text-6xl text-primary/30">analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="w-1 h-6 bg-primary rounded-full"></span>
+                    <h3 class="text-lg font-bold text-on-surface tracking-tight">Karakteristik Sinyal Dasar</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-xl bg-tertiary-container/20 text-tertiary">
+                                <span class="material-symbols-outlined">swap_driving_apps</span>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <h4 class="font-bold text-sm sm:text-base text-on-surface">Dinamika Kelembapan vs VOC</h4>
+                                <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                                    <strong class="text-on-surface">Kelembapan</strong> bersifat mutlak untuk memantau kenyamanan dan jamur. Sementara <strong class="text-on-surface">VOC</strong> merupakan indeks kesegaran udara relatif. Perhatikan lonjakan tajam terhadap garis dasar (<em class="text-primary font-medium">baseline</em>), bukan angka absolutnya, karena ia merespons aktivitas seperti memasak atau sirkulasi udara.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-xl bg-error-container/20 text-error">
+                                <span class="material-symbols-outlined">warning</span>
+                            </div>
+                            <div class="space-y-2 flex-1">
+                                <h4 class="font-bold text-sm sm:text-base text-on-surface">Efek Pemanasan Sendiri (Self-Heating)</h4>
+                                <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                                    Chip BME680 yang berada dekat dengan modul ESP32 dapat membaca suhu <span class="text-error font-semibold">1–2°C lebih tinggi</span> akibat rambatan panas papan pengontrol. Pastikan penempatan node memiliki aliran udara bebas dan terapkan nilai kompensasi (<em class="text-primary font-medium">offset</em>) pada firmware Anda.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-1 h-6 bg-secondary rounded-full"></span>
+                    <h3 class="text-lg font-bold text-on-surface tracking-tight">Matriks Kondisi Rumah Tangga Indonesia</h3>
+                </div>
+                <p class="text-xs sm:text-sm text-on-surface-variant mb-6">Ambang batas acuan lokal untuk mengidentifikasi anomali pada grafik pemantauan Anda:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group hover:border-error/40 transition-colors">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <div class="p-2.5 rounded-xl bg-red-50 text-error">
+                                    <span class="material-symbols-outlined">coronavirus</span>
+                                </div>
+                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-red-50 text-error border border-error/20">
+                                    &gt; 70% RH
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base text-on-surface mb-1">Risiko Jamur & Dinding Apak</h4>
+                                <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                                    Kelembapan relatif tinggi yang menetap dalam waktu lama (biasanya pasca hujan atau malam hari) memicu spora jamur pada dinding rumah.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group hover:border-secondary/40 transition-colors">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <div class="p-2.5 rounded-xl bg-orange-50 text-secondary">
+                                    <span class="material-symbols-outlined">bed</span>
+                                </div>
+                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-orange-50 text-secondary border border-secondary/20">
+                                    &gt; 60% RH
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base text-on-surface mb-1">Alergen & Tungau Debu</h4>
+                                <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                                    Kondisi kasur atau ruangan yang konsisten lembap menjadi lingkungan ideal bagi perkembangbiakan tungau pemicu alergi pernapasan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-low border border-outline-variant/30 rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-colors">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <div class="p-2.5 rounded-xl bg-green-50 text-primary">
+                                    <span class="material-symbols-outlined">water_drop</span>
+                                </div>
+                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-green-50 text-primary border border-primary/20">
+                                    Info Tekanan
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base text-on-surface mb-1">Siklus Genangan & Nyamuk</h4>
+                                <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                                    Kombinasi jatuhnya tekanan udara dan melonjaknya kelembapan mengindikasikan datangnya hujan besar. Alarm dini untuk waspada genangan air.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div class="space-y-1">
+                        <h3 class="text-base sm:text-lg font-bold text-on-surface flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary">extension</span> Modul Ekstensi Masa Depan
+                        </h3>
+                        <p class="text-xs text-on-surface-variant leading-relaxed">
+                            Kit dasar mengukur indeks campuran tunggal (VOC relatif). Pasang modul tambahan berikut jika Anda memerlukan metrik spesifik:
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto rounded-xl border border-outline-variant/40">
+                    <table class="w-full text-xs sm:text-sm text-left min-w-[550px]">
+                        <thead class="bg-surface-container text-on-surface font-semibold text-xs border-b border-outline-variant">
+                            <tr>
+                                <th class="px-5 py-3.5">Target Parameter</th>
+                                <th class="px-5 py-3.5">Keterbatasan Kit Dasar</th>
+                                <th class="px-5 py-3.5">Rekomendasi Modul Tambahan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/30 text-on-surface-variant bg-surface-container-lowest">
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-5 py-4 font-semibold text-on-surface">Kadar CO₂ Murni / Laju Ventilasi</td>
+                                <td class="px-5 py-4 text-xs">Indeks VOC hanya mendeteksi perubahan bau/gas, bukan volume sirkulasi udara aktual.</td>
+                                <td class="px-5 py-4">
+                                    <span class="inline-flex font-mono text-[11px] font-bold text-secondary bg-secondary-container/30 px-2 py-1 rounded">
+                                        Sensirion SCD41 (I2C)
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="px-5 py-4 font-semibold text-on-surface">Partikulat Debu PM2.5 / Polusi Asap</td>
+                                <td class="px-5 py-4 text-xs">Tidak memiliki komponen optik penangkap partikulat mikroskopis di udara.</td>
+                                <td class="px-5 py-4">
+                                    <span class="inline-flex font-mono text-[11px] font-bold text-secondary bg-secondary-container/30 px-2 py-1 rounded">
+                                        Plantower PMS7003T (UART)
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer class="bg-surface-container-highest border-t border-outline-variant mt-section-gap-desktop">
+        <div class="max-w-container-max-width mx-auto py-8 px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <span class="font-headline-md text-secondary">SensorKita</span>
+                <p class="font-label-caps text-xs text-on-surface-variant mt-1">© 2024 Bengkel Udara Community</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <a class="font-label-caps text-xs sm:text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Kebijakan Privasi</a>
+                <a class="font-label-caps text-xs sm:text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Kontak Kami</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- LOGIKA TOGGLE SUB-TAB NAVIGATION (DASHBOARD VS INFO) ---
+        function switchSubTab(targetTab) {
+            const dashboardWrap = document.getElementById('tab-dashboard');
+            const infoWrap = document.getElementById('tab-info');
+
+            if (targetTab === 'info') {
+                dashboardWrap.classList.replace('block', 'hidden');
+                infoWrap.classList.replace('hidden', 'block');
+            } else {
+                dashboardWrap.classList.replace('hidden', 'block');
+                infoWrap.classList.replace('block', 'hidden');
+                // Lakukan pemanggilan ulang line chart canvas agar dimensinya presisi saat tab kembali dibuka
+                loadDashboard();
+            }
+        }
+
+        // --- SOURCE LOGIKA ORIGINAL TIME SERIES API SMART CITIZEN (PERFECTLY PRESERVED) ---
+        const devices = [
+            { id: "19686" },
+            { id: "19684" },
+            { id: "19682" }
+        ];
+
+        const API_BASE = "https://api.smartcitizen.me/v0/devices/";
+        const colors = ["#416744", "#695d46", "#356668"];
+
+        function getDateRange() {
+            const range = document.getElementById("rangeSelect").value;
+            const to = new Date();
+            const from = new Date();
+
+            if (range === "24h") from.setHours(from.getHours() - 24);
+            if (range === "3d") from.setDate(from.getDate() - 3);
+            if (range === "7d") from.setDate(from.getDate() - 7);
+
+            return {
+                from: from.toISOString(),
+                to: to.toISOString()
+            };
+        }
+
+        async function fetchDeviceMetadata(deviceId) {
+            const res = await fetch(API_BASE + deviceId);
+            if (!res.ok) throw new Error("Gagal mengambil metadata device " + deviceId);
+            return await res.json();
+        }
+
+        function getSensors(data) {
+            if (data.data && Array.isArray(data.data.sensors)) return data.data.sensors;
+            if (Array.isArray(data.sensors)) return data.sensors;
+            return [];
+        }
+
+        function sensorText(sensor) {
+            return [
+                sensor.name,
+                sensor.description,
+                sensor.unit,
+                sensor.measurement && sensor.measurement.name,
+                sensor.measurement && sensor.measurement.description
+            ].filter(Boolean).join(" ").toLowerCase();
+        }
+
+        function findSensorByMetric(sensors, metric) {
+            if (metric === "temperature") {
+                return sensors.find(sensor => {
+                    const text = sensorText(sensor);
+                    return text.includes("air temperature") ||
+                        text.includes("temperature") ||
+                        text.includes("temp") ||
+                        text.includes("°c") ||
+                        text.includes("ºc");
+                });
+            }
+
+            if (metric === "humidity") {
+                return sensors.find(sensor => {
+                    const text = sensorText(sensor);
+                    return text.includes("relative humidity") ||
+                        text.includes("humidity");
+                });
+            }
+
+            return null;
+        }
+
+        async function fetchReadings(deviceId, sensorId, rollup, from, to) {
+            const url =
+                API_BASE + deviceId +
+                "/readings?sensor_id=" + sensorId +
+                "&rollup=" + encodeURIComponent(rollup) +
+                "&from=" + encodeURIComponent(from) +
+                "&to=" + encodeURIComponent(to) +
+                "&function=avg";
+
+            const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error("Gagal mengambil readings device " + deviceId + ", sensor " + sensorId);
+            }
+            return await res.json();
+        }
+
+        function normalizeReadings(json) {
+            let readings = [];
+
+            if (Array.isArray(json.readings)) {
+                readings = json.readings;
+            } else if (Array.isArray(json)) {
+                readings = json;
+            } else if (json.data && Array.isArray(json.data.readings)) {
+                readings = json.data.readings;
+            }
+
+            return readings.map(item => {
+                if (Array.isArray(item)) {
+                    return {
+                        time: new Date(item[0]),
+                        value: Number(item[1])
+                    };
+                }
+
+                return {
+                    time: new Date(item.recorded_at || item.time || item.date),
+                    value: Number(item.value || item.avg || item.y)
+                };
+            }).filter(d => !isNaN(d.time.getTime()) && !isNaN(d.value));
+        }
+
+        function formatDateLabel(date) {
+            return date.toLocaleString("id-ID", {
+                day: "2-digit",
+                month: "short",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+        function drawLineChart(seriesData, metricLabel, unit) {
+            const canvas = document.getElementById("timeSeriesChart");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const padding = { left: 64, right: 26, top: 30, bottom: 66 };
+            const allPoints = seriesData.flatMap(s => s.points);
+
+            if (!allPoints.length) {
+                ctx.font = "16px Arial";
+                ctx.fillStyle = "#6b7280";
+                ctx.fillText("Tidak ada data time series yang tersedia.", 70, 80);
+                return;
+            }
+
+            const minTime = Math.min(...allPoints.map(p => p.time.getTime()));
+            const maxTime = Math.max(...allPoints.map(p => p.time.getTime()));
+            const minValue = Math.min(...allPoints.map(p => p.value));
+            const maxValue = Math.max(...allPoints.map(p => p.value));
+
+            const yMin = minValue === maxValue ? minValue - 1 : minValue - (maxValue - minValue) * 0.12;
+            const yMax = minValue === maxValue ? maxValue + 1 : maxValue + (maxValue - minValue) * 0.12;
+
+            const chartW = width - padding.left - padding.right;
+            const chartH = height - padding.top - padding.bottom;
+
+            function xScale(time) {
+                if (maxTime === minTime) return padding.left;
+                return padding.left + ((time - minTime) / (maxTime - minTime)) * chartW;
+            }
+
+            function yScale(value) {
+                return padding.top + (1 - ((value - yMin) / (yMax - yMin))) * chartH;
+            }
+
+            ctx.strokeStyle = "#e4e2e1";
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i <= 5; i++) {
+                const y = padding.top + (chartH / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(width - padding.right, y);
+                ctx.stroke();
+
+                const value = yMax - ((yMax - yMin) / 5) * i;
+                ctx.fillStyle = "#424941";
+                ctx.font = "12px Inter, Arial";
+                ctx.fillText(value.toFixed(1) + " " + unit, 10, y + 4);
+            }
+
+            ctx.strokeStyle = "#727970";
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, height - padding.bottom);
+            ctx.lineTo(width - padding.right, height - padding.bottom);
+            ctx.stroke();
+
+            seriesData.forEach((series, index) => {
+                if (!series.points.length) return;
+
+                ctx.strokeStyle = colors[index % colors.length];
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+
+                series.points.forEach((point, idx) => {
+                    const x = xScale(point.time.getTime());
+                    const y = yScale(point.value);
+
+                    if (idx === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+
+                ctx.stroke();
+
+                series.points.forEach(point => {
+                    const x = xScale(point.time.getTime());
+                    const y = yScale(point.value);
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = colors[index % colors.length];
+                    ctx.fill();
+                });
+            });
+
+            const tickCount = 4;
+            ctx.fillStyle = "#424941";
+            ctx.font = "12px Inter, Arial";
+
+            for (let i = 0; i <= tickCount; i++) {
+                const time = new Date(minTime + ((maxTime - minTime) / tickCount) * i);
+                const x = xScale(time.getTime());
+                const label = formatDateLabel(time);
+
+                ctx.save();
+                ctx.translate(x - 8, height - 38);
+                ctx.rotate(-0.35);
+                ctx.fillText(label, 0, 0);
+                ctx.restore();
+            }
+
+            ctx.fillStyle = "#1b1c1c";
+            ctx.font = "bold 15px Plus Jakarta Sans, Arial";
+            ctx.fillText(metricLabel + " (" + unit + ")", padding.left, 20);
+        }
+
+        function renderDeviceGrid(deviceResults) {
+            const grid = document.getElementById("deviceGrid");
+            if (!grid) return;
+
+            grid.innerHTML = deviceResults.map(item => {
+                if (item.error) {
+                    return `
+            <div class="p-5 bg-surface-container rounded-2xl border border-error/20">
+              <div class="font-bold text-error text-base mb-1">Device ${item.id}</div>
+              <div class="text-xs text-on-surface-variant">Gagal memuat metadata. Periksa koneksi API.</div>
+            </div>
+          `;
+                }
+
+                return `
+          <div class="p-5 bg-surface-container-low rounded-2xl border border-outline-variant flex flex-col justify-between">
+            <div>
+              <div class="font-bold text-primary text-base mb-2">${item.name}</div>
+              <div class="text-xs text-on-surface-variant leading-relaxed space-y-1">
+                <p><b>Device ID:</b> ${item.id}</p>
+                <p><b>Status:</b> ${item.state}</p>
+                <p><b>Sensor ${item.metricName}:</b> ${item.sensorName || "-"}</p>
+                <p><b>Sensor ID:</b> ${item.sensorId || "-"}</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="inline-block bg-primary-fixed text-on-primary-container px-3 py-1 rounded-full text-[11px] font-bold">${item.points} titik data</span>
+            </div>
+          </div>
+        `;
+            }).join("");
+        }
+
+        function renderLegend(seriesData) {
+            const legend = document.getElementById("legend");
+            if (!legend) return;
+
+            legend.innerHTML = seriesData.map((s, i) => `
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 inline-block rounded-full flex-shrink-0" style="background:${colors[i % colors.length]}"></span>
+          <span>${s.label}</span>
+        </div>
+      `).join("");
+        }
+
+        function renderAnalysis(seriesData, metricLabel, unit) {
+            const box = document.getElementById("analysis");
+            if (!box) return;
+
+            const rows = seriesData.map(s => {
+                const values = s.points.map(p => p.value);
+
+                if (!values.length) {
+                    return `
+            <div class="p-3 bg-surface-container rounded-xl mb-2 text-on-surface-variant">
+              <b>${s.label}</b>: tidak ada data historis yang berhasil dibaca.
+            </div>
+          `;
+                }
+
+                const avg = values.reduce((a, b) => a + b, 0) / values.length;
+                const min = Math.min(...values);
+                const max = Math.max(...values);
+                const latest = values[values.length - 1];
+
+                return `
+          <div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant mb-3">
+            <p class="font-bold text-primary text-sm sm:text-base mb-1">${s.label}</p>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+              Rata-rata ${metricLabel}: <b class="text-on-surface">${avg.toFixed(2)} ${unit}</b>. 
+              Minimum: <b class="text-on-surface">${min.toFixed(2)} ${unit}</b>. 
+              Maksimum: <b class="text-on-surface">${max.toFixed(2)} ${unit}</b>. 
+              Nilai terakhir: <b class="text-primary">${latest.toFixed(2)} ${unit}</b>.
+            </p>
+          </div>
+        `;
+            }).join("");
+
+            box.innerHTML = rows;
+        }
+
+        async function loadDashboard() {
+            const metricSelect = document.getElementById("metricSelect");
+            if (!metricSelect) return; // Mencegah crash jika sedang di tab Info saat loading awal
+            
+            const metric = metricSelect.value;
+            const rollup = document.getElementById("rollupSelect").value;
+            const { from, to } = getDateRange();
+
+            const metricLabel = metric === "temperature" ? "Air Temperature" : "Relative Humidity";
+            const unit = metric === "temperature" ? "°C" : "%";
+
+            document.getElementById("chartTitle").innerText =
+                metricLabel + " - 3 Device Smart Citizen";
+
+            const statusBox = document.getElementById("statusMessage");
+            statusBox.className = "p-4 bg-orange-50 border border-orange-200 text-amber-800 rounded-xl font-semibold mb-4 text-xs sm:text-sm";
+            statusBox.innerText = "Mengambil metadata device dan data time series...";
+
+            const seriesData = [];
+            const deviceResults = [];
+
+            for (let i = 0; i < devices.length; i++) {
+                const deviceId = devices[i].id;
+
+                try {
+                    const metadata = await fetchDeviceMetadata(deviceId);
+                    const sensors = getSensors(metadata);
+                    const selectedSensor = findSensorByMetric(sensors, metric);
+
+                    if (!selectedSensor) {
+                        deviceResults.push({
+                            id: deviceId,
+                            name: metadata.name || "Device " + deviceId,
+                            state: metadata.state || "-",
+                            metricName: metricLabel,
+                            sensorName: null,
+                            sensorId: null,
+                            points: 0
+                        });
+                        continue;
+                    }
+
+                    const readingsJson = await fetchReadings(
+                        deviceId,
+                        selectedSensor.id,
+                        rollup,
+                        from,
+                        to
+                    );
+
+                    const points = normalizeReadings(readingsJson);
+
+                    seriesData.push({
+                        label: metadata.name || "Device " + deviceId,
+                        points
+                    });
+
+                    deviceResults.push({
+                        id: deviceId,
+                        name: metadata.name || "Device " + deviceId,
+                        state: metadata.state || "-",
+                        metricName: metricLabel,
+                        sensorName: selectedSensor.name,
+                        sensorId: selectedSensor.id,
+                        points: points.length
+                    });
+
+                } catch (error) {
+                    console.error(error);
+                    deviceResults.push({
+                        id: deviceId,
+                        error: true
+                    });
+                }
+            }
+
+            renderDeviceGrid(deviceResults);
+            renderLegend(seriesData);
+            drawLineChart(seriesData, metricLabel, unit);
+            renderAnalysis(seriesData, metricLabel, unit);
+
+            statusBox.innerText = "Data berhasil diproses. Jika chart kosong, kemungkinan endpoint readings tidak mengembalikan data untuk rentang waktu tersebut.";
+        }
+
+        loadDashboard();
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
